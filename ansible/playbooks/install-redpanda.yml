@@ -1,4 +1,5 @@
 - hosts: redpanda
+  become: yes
 
   tasks:
   - name: add the redpanda repo

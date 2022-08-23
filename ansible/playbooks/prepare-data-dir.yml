@@ -1,4 +1,6 @@
 - hosts: redpanda
+  become: yes
+
   tasks:
   - set_fact:
       device_info: "{{ hostvars[inventory_hostname].ansible_devices }}"
@@ -46,11 +48,12 @@
       owner: root
       group: root
       mode: ugo=rwx
-  - name: set permissions
-    file:
-      dest: /var/lib/redpanda
-      src: /mnt/vectorized/redpanda
-      state: link
-      owner: root
-      group: root
-      mode: ugo=rwx
+
+#  - name: set permissions
+#    file:
+#      dest: /var/lib/redpanda
+#      src: /mnt/vectorized/redpanda
+#      state: link
+#      owner: root
+#      group: root
+#      mode: ugo=rwx

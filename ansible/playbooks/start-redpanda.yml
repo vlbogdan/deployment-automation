@@ -1,11 +1,13 @@
 - hosts: redpanda
-  tasks:
+  become: yes
 
-  - name: ensure /etc/redpanda exists
+  tasks:
+  
+  - name: ensure /etc/redpanda_exists
     file:
       path: /etc/redpanda
       state: directory
-
+      
   - name: configure redpanda
     notify:
       - restart redpanda-tuner
